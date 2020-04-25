@@ -6,7 +6,7 @@ import java.util.Vector;
 public class Customer {
 
 	private String _name;
-	private Vector _rentals = new Vector();
+	private Vector<Rental> _rentals = new Vector<Rental>();
 
 	/**
 	 * 
@@ -31,7 +31,7 @@ public class Customer {
 	public String statement() {
 		double totalAmount = 0;
 		int frequentRenterPoints = 0;
-		Enumeration rentals = _rentals.elements();
+		Enumeration<Rental> rentals = _rentals.elements();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasMoreElements()) {
 			double thisAmount = 0;
