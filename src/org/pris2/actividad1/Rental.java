@@ -2,8 +2,8 @@ package org.pris2.actividad1;
 
 public class Rental {
 
-	private int _daysRented;
-	private Movie _movie;
+	private int daysRented;
+	private Movie movie;
 
 	/**
 	 * 
@@ -11,24 +11,24 @@ public class Rental {
 	 * @param daysRented
 	 */
 	public Rental(Movie movie, int daysRented) {
-		_movie = movie;
-		_daysRented = daysRented;
+		this.movie = movie;
+		this.daysRented = daysRented;
 	}
 
 	public int getDaysRented() {
-		return _daysRented;
+		return daysRented;
 	}
 
 	public Movie getMovie() {
-		return _movie;
+		return movie;
 	}
 
 	double getCharge(){
-		return _movie.getCharge(_daysRented);
+		return movie.getCharge(daysRented);
 	}
 	
 	int getFrequentRenterPoints() {
-		return _movie.getFrecuentRenterPoints(_daysRented);
+		return movie.getFrecuentRenterPoints(daysRented);
 	}
 
 }
