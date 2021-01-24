@@ -1,12 +1,12 @@
 package org.pris2.actividad1;
 
-import java.util.Enumeration;
-import java.util.Vector;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Customer {
 
 	private String _name;
-	private Vector<Rental> _rentals = new Vector<Rental>();
+	private ArrayList<Rental> _rentals = new ArrayList<Rental>();
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class Customer {
 	 * @param arg
 	 */
 	public void addRental(Rental arg) {
-		_rentals.addElement(arg);
+		_rentals.add(arg);
 	}
 
 	public String getName() {
@@ -35,10 +35,10 @@ public class Customer {
 	 */
 
 	public String statement() {
-		Enumeration<Rental> rentals = _rentals.elements();
+		Iterator<Rental> rentals = _rentals.iterator();
 		String result = "Rental Record for " + getName() + "\n";
-		while (rentals.hasMoreElements()) {
-			Rental aRental = (Rental) rentals.nextElement();
+		while (rentals.hasNext()) {
+			Rental aRental = (Rental) rentals.next();
 
 			// show figures for this rental
 			result += "\t" + aRental.getMovie().getTitle() + "\t" + String.valueOf(aRental.getCharge()) + "\n";
@@ -50,10 +50,10 @@ public class Customer {
 	}
 
 	public String htmlStatement() {
-		Enumeration<Rental> rentals = _rentals.elements();
+		Iterator<Rental> rentals = _rentals.iterator();
 		String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
 			// show figures for each rental
 			result += each.getMovie().getTitle() + ": " + String.valueOf(each.getCharge()) + "<BR>\n";
 		}
@@ -66,9 +66,9 @@ public class Customer {
 
 	public double getTotalCharge() {
 		double result = 0;
-		Enumeration<Rental> rentals = _rentals.elements();
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
+		Iterator<Rental> rentals = _rentals.iterator();
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
 			result += each.getCharge();
 		}
 		return result;
@@ -76,9 +76,9 @@ public class Customer {
 
 	private int getTotalFrequentRenterPoints() {
 		int result = 0;
-		Enumeration<Rental> rentals = _rentals.elements();
-		while (rentals.hasMoreElements()) {
-			Rental each = (Rental) rentals.nextElement();
+		Iterator<Rental> rentals = _rentals.iterator();
+		while (rentals.hasNext()) {
+			Rental each = (Rental) rentals.next();
 			result += each.getFrequentRenterPoints();
 		}
 		return result;
