@@ -1,12 +1,12 @@
 package org.pris2.actividad1;
 
-public class ChildrensPrice extends Price {
+public class ChildrensPrice implements Price {
 
-	int getPriceCode() {
+	public int getPriceCode() {
 		return Movie.CHILDRENS;
 	}
 
-	double getCharge(int daysRented){
+	public double getCharge(int daysRented){
 		double result = 1.5;
 		if (daysRented > 3)
 			result += (daysRented - 3) * 1.5;

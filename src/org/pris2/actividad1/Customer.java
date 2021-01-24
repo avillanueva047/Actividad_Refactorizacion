@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class Customer {
 
 	private String name;
-	private ArrayList<Rental> rentals = new ArrayList<>();
+	private ArrayList<Rental> rentalList = new ArrayList<>();
 
 	/**
 	 * 
@@ -21,7 +21,7 @@ public class Customer {
 	 * @param arg
 	 */
 	public void addRental(Rental arg) {
-		this.rentals.add(arg);
+		this.rentalList.add(arg);
 	}
 
 	public String getName() {
@@ -35,7 +35,7 @@ public class Customer {
 	 */
 
 	public String statement() {
-		Iterator<Rental> rentals = this.rentals.iterator();
+		Iterator<Rental> rentals = this.rentalList.iterator();
 		String result = "Rental Record for " + getName() + "\n";
 		while (rentals.hasNext()) {
 			Rental aRental = (Rental) rentals.next();
@@ -50,7 +50,7 @@ public class Customer {
 	}
 
 	public String htmlStatement() {
-		Iterator<Rental> rentals = this.rentals.iterator();
+		Iterator<Rental> rentals = this.rentalList.iterator();
 		String result = "<H1>Rentals for <EM>" + getName() + "</EM></H1><P>\n";
 		while (rentals.hasNext()) {
 			Rental each = (Rental) rentals.next();
@@ -58,7 +58,7 @@ public class Customer {
 			result += each.getMovie().getTitle() + ": " + each.getCharge() + "<BR>\n";
 		}
 		// add footer lines
-		result += "<P>You owe <EM>" + String.valueOf(getTotalCharge()) + "</EM><P>\n";
+		result += "<P>You owe <EM>" + getTotalCharge() + "</EM><P>\n";
 		result += "On this rental you earned <EM>" + getTotalFrequentRenterPoints()
 		+ "</EM> frequent renter points<P>";
 		return result;
@@ -66,7 +66,7 @@ public class Customer {
 
 	public double getTotalCharge() {
 		double result = 0;
-		Iterator<Rental> rentals = this.rentals.iterator();
+		Iterator<Rental> rentals = this.rentalList.iterator();
 		while (rentals.hasNext()) {
 			Rental each = (Rental) rentals.next();
 			result += each.getCharge();
@@ -76,7 +76,7 @@ public class Customer {
 
 	private int getTotalFrequentRenterPoints() {
 		int result = 0;
-		Iterator<Rental> rentals = this.rentals.iterator();
+		Iterator<Rental> rentals = this.rentalList.iterator();
 		while (rentals.hasNext()) {
 			Rental each = (Rental) rentals.next();
 			result += each.getFrequentRenterPoints();

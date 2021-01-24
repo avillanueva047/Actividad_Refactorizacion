@@ -1,11 +1,11 @@
 package org.pris2.actividad1;
 
-public abstract class Price {
-	abstract int getPriceCode();
+public interface Price {
+	int getPriceCode();
 	
-	abstract double getCharge(int daysRented);
+	double getCharge(int daysRented);
 	
-	int getFrequentRenterPoints(int daysRented){
+	default int getFrequentRenterPoints(int daysRented){
 		return 1 * daysRented;
 	}
 }
